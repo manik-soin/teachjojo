@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens mirror RevisionDojo's production palette (extracted from
+ * their shipped stylesheet on 11 Sep 2026) so the recreation sits inside
+ * the same visual system rather than approximating it.
+ */
+:root {
+  --background: #fff;
+  --foreground: #0a0a0a;
+  --card: #fff;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-hover: #e8e8e8;
+  --muted-foreground: #737373;
+  --accent-primary: #e1f3fe;
+  --accent-primary-foreground: #0284c5;
+  --accent-fuchsia: #f9e6ff;
+  --accent-fuchsia-foreground: #bf27d3;
+  --accent-purple: #f2e6ff;
+  --accent-purple-foreground: #9133ea;
+  --destructive: #fb2d38;
+  --destructive-foreground: #fafafa;
+  --destructive-muted: #fee2e2;
+  --destructive-muted-foreground: #dc2626;
+  --success: #00c750;
+  --success-foreground: #fafafa;
+  --success-muted: #dcfce7;
+  --success-muted-foreground: #15803d;
+  --warning: #f59e0b;
+  --warning-foreground: #fafafa;
+  --warning-muted: #fef3c7;
+  --border: #e5e5e5;
+  --border-subtle: #f0f0f0;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+  --chart-3: #e88c30;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #0d0d0d;
+  --foreground: #fafafa;
+  --card: #0a0a0a;
+  --primary: #fafafa;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #1a1a1a;
+  --muted-hover: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent-primary: #122731;
+  --accent-primary-foreground: #3abff8;
+  --accent-fuchsia: #301a32;
+  --accent-fuchsia-foreground: #e87bf9;
+  --accent-purple: #291d35;
+  --accent-purple-foreground: #bf83fc;
+  --destructive: #ff4f58;
+  --destructive-muted: #4c1515;
+  --destructive-muted-foreground: #ef4444;
+  --success-muted: #103a1f;
+  --success-muted-foreground: #22c55e;
+  --warning-muted: #4b2d0b;
+  --border: #262626;
+  --border-subtle: #1d1d1d;
+  --input: #262626;
+  --ring: #d4d4d4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-hover: var(--muted-hover);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-foreground: var(--accent-primary-foreground);
+  --color-accent-fuchsia: var(--accent-fuchsia);
+  --color-accent-fuchsia-foreground: var(--accent-fuchsia-foreground);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-purple-foreground: var(--accent-purple-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-destructive-muted-foreground: var(--destructive-muted-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-success-muted-foreground: var(--success-muted-foreground);
+  --color-warning: var(--warning);
+  --color-warning-muted: var(--warning-muted);
+  --color-border: var(--border);
+  --color-subtle: var(--border-subtle);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-3: var(--chart-3);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-title: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --animate-bubble-in: bubble-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-fade-up: fade-up 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-fade-in: fade-in 180ms ease-out both;
+  --animate-dialog-in: dialog-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-float: float 3.2s ease-in-out infinite;
+  --animate-slide-in-right: slide-in-right 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  @keyframes bubble-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes dialog-in {
+    from { opacity: 0; scale: 0.97; }
+    to { opacity: 1; scale: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .font-title {
+    font-family: var(--font-title);
+    font-weight: 600;
+  }
+  /* Product heading scale (their .h2/.h3/.h4 utilities). */
+  .h2 { font-size: 1.875rem; line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; }
+  .h3 { font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
+  .h4 { font-size: 1.125rem; line-height: 1.3; letter-spacing: -0.01em; font-weight: 600; }
+  @media (min-width: 640px) {
+    .h2 { font-size: 2.25rem; }
+    .h3 { font-size: 1.75rem; }
+    .h4 { font-size: 1.25rem; }
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Respect the OS setting: no entrance, float or bounce animations, and instant transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
