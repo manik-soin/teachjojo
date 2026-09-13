@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      # The build never opens a connection; the client only needs a syntactically valid URL to construct.
+      DATABASE_URL: postgres://ci:ci@localhost:5432/ci
+      RD_UID_SECRET: ci-only-secret
+      JOJO_MODEL: mock
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+      - name: Eval on the deterministic mock (gates agreement and tag recall)
+        run: pnpm eval
+      - run: pnpm build
+      - name: Migrations are in sync with the schema
+        run: |
+          pnpm db:generate --name ci-check
+          if ls drizzle/*ci-check* >/dev/null 2>&1; then
+            echo "schema.ts changed without a checked-in migration; run pnpm db:generate" >&2
+            exit 1
+          fi
+
+  # Paid-model evaluation runs only on request, with credentials from repository secrets.
+  eval-live:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://ci:ci@localhost:5432/ci
+      RD_UID_SECRET: ci-only-secret
+      AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+      # Same route as production; a missing key fails the run instead of falling back to the mock.
+      JOJO_PROVIDER: gateway
+      JOJO_MODEL: openai/gpt-5.4-mini
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm eval

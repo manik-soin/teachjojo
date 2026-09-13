@@ -1,0 +1,674 @@
+{
+  "$comment": "Hand-labelled Teach Jojo turns. Each case is one student message in a fixed context (subject, topic, difficulty); the label is what a careful teacher would want the system to do with it. expect.objectives gives the status every listed objective must end in; mistake = the turn must be tagged inaccurate/mistake; nudge = after a stall Jojo must give one sentence of the idea and hand it back; asks_to_define = Jojo must ask what `term` means. Written 12 Sep 2026 by the candidate from IB Biology A1.1/B2.1, Chemistry S2.2, Physics A.2 and Economics 1.1/2.5 content; no model was used to write labels. Slices: correct_complete, correct_partial, mistake, stall, vocab_dodge. Schema made explicit 13 Sep 2026.",
+  "cases": [
+    {
+      "id": "g01",
+      "slice": "correct_complete",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o1",
+          "text": "Describe the structure of the plasma membrane",
+          "status": "not_started",
+          "criteria": [
+            "a phospholipid bilayer",
+            "hydrophilic phosphate heads face the water and hydrophobic tails point inwards",
+            "proteins embedded in or spanning the bilayer",
+            "cholesterol between the phospholipids"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "the plasma membrane is a phospholipid bilayer. each phospholipid has a hydrophilic phosphate head that faces the watery inside and outside of the cell and two hydrophobic fatty acid tails that point inwards away from water. proteins are embedded in it, some go all the way through and some sit on one side, and cholesterol sits between the phospholipids.",
+      "expect": {
+        "objectives": {
+          "o1": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g02",
+      "slice": "correct_partial",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o1",
+          "text": "Describe the structure of the plasma membrane",
+          "status": "not_started",
+          "criteria": [
+            "a phospholipid bilayer",
+            "hydrophilic phosphate heads face the water and hydrophobic tails point inwards",
+            "proteins embedded in or spanning the bilayer",
+            "cholesterol between the phospholipids"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "it's a bilayer made of phospholipids",
+      "expect": {
+        "objectives": {
+          "o1": "in_progress"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g03",
+      "slice": "mistake",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o2",
+          "text": "Explain the direction of osmosis",
+          "status": "in_progress",
+          "criteria": [
+            "net movement of water across a partially permeable membrane",
+            "from lower solute concentration to higher solute concentration (towards more solute, where there is less free water)"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "which way does the water go?"
+        }
+      ],
+      "message": "water moves from the side with more solute to the side with less solute",
+      "expect": {
+        "objectives": {
+          "o2": "in_progress"
+        },
+        "mistake": true
+      }
+    },
+    {
+      "id": "g04",
+      "slice": "correct_complete",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o2",
+          "text": "Explain the direction of osmosis",
+          "status": "in_progress",
+          "criteria": [
+            "net movement of water across a partially permeable membrane",
+            "from lower solute concentration to higher solute concentration (towards more solute, where there is less free water)"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "which way does the water go?"
+        }
+      ],
+      "message": "osmosis is the net movement of water across a partially permeable membrane from a region of lower solute concentration to a region of higher solute concentration, so from where there is more free water to where there is less free water, until the water potential is equal on both sides.",
+      "expect": {
+        "objectives": {
+          "o2": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g05",
+      "slice": "stall",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o3",
+          "text": "Compare simple and facilitated diffusion",
+          "status": "in_progress",
+          "criteria": [
+            "both are passive and move particles down their concentration gradient",
+            "simple diffusion goes straight through the bilayer for small or non-polar particles",
+            "facilitated diffusion uses channel or carrier proteins for polar or charged particles"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "so what's different about the facilitated one?"
+        },
+        {
+          "role": "user",
+          "content": "um it's helped somehow"
+        },
+        {
+          "role": "assistant",
+          "content": "helped by what though?"
+        }
+      ],
+      "message": "i don't know",
+      "expect": {
+        "objectives": {
+          "o3": "in_progress"
+        },
+        "mistake": false,
+        "nudge": true
+      }
+    },
+    {
+      "id": "g06",
+      "slice": "vocab_dodge",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o3",
+          "text": "Compare simple and facilitated diffusion",
+          "status": "not_started",
+          "criteria": [
+            "both are passive and move particles down their concentration gradient",
+            "simple diffusion goes straight through the bilayer for small or non-polar particles",
+            "facilitated diffusion uses channel or carrier proteins for polar or charged particles"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "facilitated diffusion uses transmembrane proteins",
+      "term": [
+        "transmembrane"
+      ],
+      "expect": {
+        "objectives": {
+          "o3": "in_progress"
+        },
+        "mistake": false,
+        "asks_to_define": true
+      }
+    },
+    {
+      "id": "g07",
+      "slice": "correct_complete",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o3",
+          "text": "Compare simple and facilitated diffusion",
+          "status": "in_progress",
+          "criteria": [
+            "both are passive and move particles down their concentration gradient",
+            "simple diffusion goes straight through the bilayer for small or non-polar particles",
+            "facilitated diffusion uses channel or carrier proteins for polar or charged particles"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "helped by what though?"
+        }
+      ],
+      "message": "both are passive, so particles move down their concentration gradient without using energy. simple diffusion is small or non-polar particles like oxygen slipping straight between the phospholipids. facilitated diffusion is for particles that are too big or charged to do that, like glucose or ions, so they pass through a channel protein or a carrier protein instead.",
+      "expect": {
+        "objectives": {
+          "o3": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g08",
+      "slice": "mistake",
+      "subject": "Biology",
+      "topic": "B2.1 Membranes and membrane transport",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "o3",
+          "text": "Compare simple and facilitated diffusion",
+          "status": "in_progress",
+          "criteria": [
+            "both are passive and move particles down their concentration gradient",
+            "simple diffusion goes straight through the bilayer for small or non-polar particles",
+            "facilitated diffusion uses channel or carrier proteins for polar or charged particles"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "facilitated diffusion needs ATP because the carrier proteins have to pump the molecules across",
+      "expect": {
+        "objectives": {
+          "o3": "in_progress"
+        },
+        "mistake": true
+      }
+    },
+    {
+      "id": "g09",
+      "slice": "correct_partial",
+      "subject": "Economics",
+      "topic": "2.5 Elasticities of demand",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "e1",
+          "text": "Explain what price elasticity of demand measures",
+          "status": "not_started",
+          "criteria": [
+            "the responsiveness of quantity demanded to a change in price",
+            "calculated as percentage change in quantity demanded divided by percentage change in price",
+            "elastic if greater than one, inelastic if less than one"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "PED is how much demand changes when price changes",
+      "expect": {
+        "objectives": {
+          "e1": "in_progress"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g10",
+      "slice": "correct_complete",
+      "subject": "Economics",
+      "topic": "2.5 Elasticities of demand",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "e1",
+          "text": "Explain what price elasticity of demand measures",
+          "status": "in_progress",
+          "criteria": [
+            "the responsiveness of quantity demanded to a change in price",
+            "calculated as percentage change in quantity demanded divided by percentage change in price",
+            "elastic if greater than one, inelastic if less than one"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "how much is how much though?"
+        }
+      ],
+      "message": "price elasticity of demand measures how responsive the quantity demanded is to a change in price. you work it out as the percentage change in quantity demanded divided by the percentage change in price. if the number is bigger than one demand is elastic, so a small price change causes a big change in quantity, and if it's less than one it's inelastic.",
+      "expect": {
+        "objectives": {
+          "e1": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g11",
+      "slice": "mistake",
+      "subject": "Economics",
+      "topic": "2.5 Elasticities of demand",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "e2",
+          "text": "Explain why necessities tend to have price-inelastic demand",
+          "status": "in_progress",
+          "criteria": [
+            "necessities have few close substitutes",
+            "people need them regardless of price",
+            "so quantity demanded changes little when the price rises"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "necessities like bread are elastic because everyone needs them so demand changes a lot when the price goes up",
+      "expect": {
+        "objectives": {
+          "e2": "in_progress"
+        },
+        "mistake": true
+      }
+    },
+    {
+      "id": "g12",
+      "slice": "correct_complete",
+      "subject": "Biology",
+      "topic": "A1.1 Water",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "w1",
+          "text": "Explain how the polarity of water leads to hydrogen bonding",
+          "status": "not_started",
+          "criteria": [
+            "oxygen is more electronegative, so the shared electrons sit closer to it",
+            "the oxygen end is partially negative and the hydrogen ends partially positive",
+            "a hydrogen of one water molecule is attracted to the oxygen of a neighbouring molecule"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "oxygen is more electronegative than hydrogen so it pulls the shared electrons towards itself. that leaves the oxygen end slightly negative and the two hydrogen ends slightly positive, so the molecule is polar. the positive hydrogen of one water molecule is attracted to the negative oxygen of a neighbouring molecule and that attraction is a hydrogen bond.",
+      "expect": {
+        "objectives": {
+          "w1": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g13",
+      "slice": "mistake",
+      "subject": "Biology",
+      "topic": "A1.1 Water",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "w1",
+          "text": "Explain how the polarity of water leads to hydrogen bonding",
+          "status": "in_progress",
+          "criteria": [
+            "oxygen is more electronegative, so the shared electrons sit closer to it",
+            "the oxygen end is partially negative and the hydrogen ends partially positive",
+            "a hydrogen of one water molecule is attracted to the oxygen of a neighbouring molecule"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "the oxygen and hydrogen share electrons equally, which creates the hydrogen bonds",
+      "expect": {
+        "objectives": {
+          "w1": "in_progress"
+        },
+        "mistake": true
+      }
+    },
+    {
+      "id": "g14",
+      "slice": "correct_partial",
+      "subject": "Biology",
+      "topic": "A1.1 Water",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "w2",
+          "text": "Describe cohesion and adhesion and give one consequence of each for living things",
+          "status": "not_started",
+          "criteria": [
+            "cohesion is water molecules sticking to each other through hydrogen bonds",
+            "adhesion is water sticking to other polar surfaces",
+            "one consequence of cohesion, such as the continuous water column in xylem or surface tension",
+            "one consequence of adhesion, such as capillary rise in cell walls or soil"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "cohesion is water sticking to itself and adhesion is water sticking to other stuff",
+      "expect": {
+        "objectives": {
+          "w2": "in_progress"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g15",
+      "slice": "correct_complete",
+      "subject": "Biology",
+      "topic": "A1.1 Water",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "w2",
+          "text": "Describe cohesion and adhesion and give one consequence of each for living things",
+          "status": "in_progress",
+          "criteria": [
+            "cohesion is water molecules sticking to each other through hydrogen bonds",
+            "adhesion is water sticking to other polar surfaces",
+            "one consequence of cohesion, such as the continuous water column in xylem or surface tension",
+            "one consequence of adhesion, such as capillary rise in cell walls or soil"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "so what does that do for a plant or a bug?"
+        }
+      ],
+      "message": "cohesion is water molecules sticking to each other because of hydrogen bonds, which is why water forms a continuous column that can be pulled up the xylem and why insects can stand on the surface. adhesion is water sticking to other polar surfaces like the walls of the xylem, which helps the water creep up narrow vessels against gravity.",
+      "expect": {
+        "objectives": {
+          "w2": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g16",
+      "slice": "stall",
+      "subject": "Economics",
+      "topic": "2.5 Elasticities of demand",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "e2",
+          "text": "Explain why necessities tend to have price-inelastic demand",
+          "status": "in_progress",
+          "criteria": [
+            "necessities have few close substitutes",
+            "people need them regardless of price",
+            "so quantity demanded changes little when the price rises"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "why would people keep buying bread if it got pricier?"
+        },
+        {
+          "role": "user",
+          "content": "because they have to?"
+        },
+        {
+          "role": "assistant",
+          "content": "have to why though?"
+        }
+      ],
+      "message": "not sure",
+      "expect": {
+        "objectives": {
+          "e2": "in_progress"
+        },
+        "mistake": false,
+        "nudge": true
+      }
+    },
+    {
+      "id": "g17",
+      "slice": "correct_complete",
+      "subject": "Economics",
+      "topic": "2.5 Elasticities of demand",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "e2",
+          "text": "Explain why necessities tend to have price-inelastic demand",
+          "status": "in_progress",
+          "criteria": [
+            "necessities have few close substitutes",
+            "people need them regardless of price",
+            "so quantity demanded changes little when the price rises"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "have to why though?"
+        }
+      ],
+      "message": "necessities like bread or medicine have few close substitutes and people need them regardless of price, so when the price rises the quantity demanded falls only a little. that means the percentage change in quantity is smaller than the percentage change in price, so the elasticity is less than one and demand is price inelastic.",
+      "expect": {
+        "objectives": {
+          "e2": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g18",
+      "slice": "mistake",
+      "subject": "Physics",
+      "topic": "A.2 Forces and momentum",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "p1",
+          "text": "Explain why momentum is conserved in a collision",
+          "status": "in_progress",
+          "criteria": [
+            "the objects exert equal and opposite forces on each other for the same time (Newton's third law)",
+            "so their changes in momentum (impulses) are equal and opposite",
+            "momentum lost by one equals momentum gained by the other when no external force acts"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "momentum is conserved because the total kinetic energy always stays the same in every collision",
+      "expect": {
+        "objectives": {
+          "p1": "in_progress"
+        },
+        "mistake": true
+      }
+    },
+    {
+      "id": "g19",
+      "slice": "correct_complete",
+      "subject": "Physics",
+      "topic": "A.2 Forces and momentum",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "p1",
+          "text": "Explain why momentum is conserved in a collision",
+          "status": "in_progress",
+          "criteria": [
+            "the objects exert equal and opposite forces on each other for the same time (Newton's third law)",
+            "so their changes in momentum (impulses) are equal and opposite",
+            "momentum lost by one equals momentum gained by the other when no external force acts"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "role": "assistant",
+          "content": "but why doesn't the total change?"
+        }
+      ],
+      "message": "during the collision each object pushes on the other with equal and opposite forces for the same time, that's newton's third law. equal and opposite forces over the same time means equal and opposite changes in momentum, so whatever one object gains the other loses and the total momentum of the system stays the same, as long as no external force acts.",
+      "expect": {
+        "objectives": {
+          "p1": "completed"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g20",
+      "slice": "vocab_dodge",
+      "subject": "Chemistry",
+      "topic": "S2.2 The covalent model",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "c1",
+          "text": "Explain how bond polarity arises from differences in electronegativity",
+          "status": "not_started",
+          "criteria": [
+            "electronegativity is an atom's pull on the shared electrons",
+            "an unequal pull shifts electron density towards the more electronegative atom",
+            "that gives a partial negative and a partial positive charge, a dipole"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "bond polarity comes from the electronegativity differential across the dipole",
+      "term": [
+        "electronegativity",
+        "differential",
+        "dipole"
+      ],
+      "expect": {
+        "objectives": {
+          "c1": "in_progress"
+        },
+        "mistake": false,
+        "asks_to_define": true
+      }
+    },
+    {
+      "id": "g21",
+      "slice": "correct_partial",
+      "subject": "Chemistry",
+      "topic": "S2.2 The covalent model",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "c1",
+          "text": "Explain how bond polarity arises from differences in electronegativity",
+          "status": "not_started",
+          "criteria": [
+            "electronegativity is an atom's pull on the shared electrons",
+            "an unequal pull shifts electron density towards the more electronegative atom",
+            "that gives a partial negative and a partial positive charge, a dipole"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "one atom pulls the electrons more than the other",
+      "expect": {
+        "objectives": {
+          "c1": "in_progress"
+        },
+        "mistake": false
+      }
+    },
+    {
+      "id": "g22",
+      "slice": "mistake",
+      "subject": "Chemistry",
+      "topic": "S2.2 The covalent model",
+      "difficulty": "clueless",
+      "objectives": [
+        {
+          "id": "c2",
+          "text": "Explain the trend in boiling points of the hydrogen halides",
+          "status": "in_progress",
+          "criteria": [
+            "HF is anomalously high because of hydrogen bonding",
+            "from HCl to HI the boiling point rises",
+            "larger molecules have more electrons, so stronger London dispersion forces"
+          ]
+        }
+      ],
+      "history": [],
+      "message": "HF has the lowest boiling point of the hydrogen halides because fluorine is the smallest atom so the forces are weakest",
+      "expect": {
+        "objectives": {
+          "c2": "in_progress"
+        },
+        "mistake": true
+      }
+    }
+  ]
+}
