@@ -1,0 +1,1 @@
+ALTER TABLE "teach_jojo_message_tag" ADD COLUMN "quotes" jsonb;
