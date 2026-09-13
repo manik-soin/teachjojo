@@ -1,0 +1,15 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function formatRelative(date: Date, now = new Date()): string {
+  const diff = Math.round((now.getTime() - date.getTime()) / 1000);
+  if (diff < 60) return "just now";
+  if (diff < 3600) return `${Math.floor(diff / 60)} min ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} h ago`;
+  if (diff < 7 * 86400) return `${Math.floor(diff / 86400)} d ago`;
+  return date.toLocaleDateString(undefined, { day: "numeric", month: "short" });
+}
